@@ -339,7 +339,14 @@ namespace Pipedrive
         {
             Ensure.ArgumentNotNull(uri, nameof(uri));
 
-            if (!uri.Host.EndsWith(".pipedrive.com"))
+            // Allow non-Pipedrive URLs for mock/testing scenarios (e.g., localhost, custom mock servers)
+            // Skip validation for localhost, 127.0.0.1, or when ALLOW_PIPEDRIVE_MOCK_URL is set
+            var allowMockUrl = uri.Host == "localhost"
+                               || uri.Host == "127.0.0.1"
+                               || uri.Host.StartsWith("host.docker.internal")
+                               || !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("ALLOW_PIPEDRIVE_MOCK_URL"));
+
+            if (!allowMockUrl && !uri.Host.EndsWith(".pipedrive.com"))
             {
                 throw new ArgumentException("Not a Pipedrive url");
             }
