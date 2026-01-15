@@ -39,5 +39,17 @@ namespace Pipedrive
         {
             return ApiConnection.Get<Lead>(ApiUrls.Lead(id));
         }
+
+        public Task<Lead> Edit(Guid id, LeadUpdate data)
+        {
+            Ensure.ArgumentNotNull(data, nameof(data));
+
+            return ApiConnection.Put<Lead>(ApiUrls.Lead(id), data);
+        }
+
+        public Task Delete(Guid id)
+        {
+            return ApiConnection.Delete(ApiUrls.Lead(id));
+        }
     }
 }
