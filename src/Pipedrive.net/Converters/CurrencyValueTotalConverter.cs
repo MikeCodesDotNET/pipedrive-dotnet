@@ -27,7 +27,14 @@ namespace Pipedrive.Internal
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            throw new System.NotImplementedException();
+            var dictionary = (Dictionary<string, CurrencyValueTotal>)value;
+            var jObject = new JObject();
+            foreach (var kvp in dictionary)
+            {
+                jObject.Add(kvp.Key, JToken.FromObject(kvp.Value, serializer));
+            }
+
+            jObject.WriteTo(writer);
         }
     }
 }

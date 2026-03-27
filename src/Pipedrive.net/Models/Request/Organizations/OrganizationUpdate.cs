@@ -14,7 +14,7 @@ namespace Pipedrive
         public long? OwnerId { get; set; }
 
         [JsonProperty("visible_to")]
-        public Visibility VisibleTo { get; set; }
+        public Visibility? VisibleTo { get; set; }
 
         [JsonIgnore]
         public IDictionary<string, ICustomField> CustomFields { get; set; }

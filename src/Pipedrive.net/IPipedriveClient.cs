@@ -58,5 +58,7 @@ namespace Pipedrive
         IUsersClient User { get; }
 
         IWebhooksClient Webhook { get; }
+
+        IMailboxClient Mailbox { get; }
     }
 }

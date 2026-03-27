@@ -390,6 +390,16 @@ namespace Pipedrive
             return response.Body.Data;
         }
 
+        public async Task<T> Patch<T>(Uri uri, object data)
+        {
+            Ensure.ArgumentNotNull(uri, nameof(uri));
+            Ensure.ArgumentNotNull(data, nameof(data));
+
+            var response = await Connection.Patch<JsonResponse<T>>(uri, data).ConfigureAwait(false);
+
+            return response.Body.Data;
+        }
+
         /// <summary>
         /// Deletes the API object at the specified URI.
         /// </summary>

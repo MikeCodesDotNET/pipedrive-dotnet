@@ -23,7 +23,10 @@ namespace Pipedrive
         public List<Phone> Phone { get; set; }
 
         [JsonProperty("visible_to")]
-        public Visibility VisibleTo { get; set; }
+        public Visibility? VisibleTo { get; set; }
+
+        [JsonProperty("label")]
+        public long? Label { get; set; }
 
         [JsonIgnore]
         public IDictionary<string, ICustomField> CustomFields { get; set; }

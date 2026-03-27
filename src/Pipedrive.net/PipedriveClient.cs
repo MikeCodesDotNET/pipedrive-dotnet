@@ -75,6 +75,7 @@ namespace Pipedrive
             Subscription = new SubscriptionsClient(apiConnection);
             User = new UsersClient(apiConnection);
             Webhook = new WebhooksClient(apiConnection);
+            Mailbox = new MailboxClient(apiConnection);
         }
 
         /// <summary>
@@ -334,6 +335,14 @@ namespace Pipedrive
         /// Refer to the API documentation for more information: https://developers.pipedrive.com/docs/api/v1/#!/Webhooks
         /// </remarks>
         public IWebhooksClient Webhook { get; private set; }
+
+        /// <summary>
+        /// Access Pipedrive's Mailbox API.
+        /// </summary>
+        /// <remarks>
+        /// Refer to the API documentation for more information: https://developers.pipedrive.com/docs/api/v1/Mailbox
+        /// </remarks>
+        public IMailboxClient Mailbox { get; private set; }
 
         static Uri FixUpBaseUri(Uri uri)
         {

@@ -207,5 +207,10 @@ namespace Pipedrive
 
             return ApiConnection.GetAll<EntityUpdateFlow>(ApiUrls.PersonMailMessages(personId), parameters, options);
         }
+
+        public Task<Person> Merge(long id, long mergeWithId)
+        {
+            return ApiConnection.Put<Person>(ApiUrls.PersonMerge(id), new { merge_with_id = mergeWithId });
+        }
     }
 }

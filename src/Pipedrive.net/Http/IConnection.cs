@@ -140,6 +140,15 @@ namespace Pipedrive
         Task<HttpStatusCode> Put(Uri uri, string accepts);
 
         /// <summary>
+        /// Performs an asynchronous HTTP PATCH request.
+        /// </summary>
+        /// <typeparam name="T">The type to map the response to</typeparam>
+        /// <param name="uri">URI endpoint to send request to</param>
+        /// <param name="body">The body of the request</param>
+        /// <returns><seealso cref="IResponse"/> representing the received HTTP response</returns>
+        Task<IApiResponse<T>> Patch<T>(Uri uri, object body);
+
+        /// <summary>
         /// Performs an asynchronous HTTP DELETE request that expects an empty response.
         /// </summary>
         /// <param name="uri">URI endpoint to send request to</param>

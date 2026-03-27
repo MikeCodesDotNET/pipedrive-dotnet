@@ -23,7 +23,7 @@ namespace Pipedrive
         public bool ActiveFlag { get; set; } = true;
 
         [JsonProperty("visible_to")]
-        public Visibility VisibleTo { get; set; }
+        public Visibility? VisibleTo { get; set; }
 
         [JsonProperty("owner_id")]
         public long OwnerId { get; set; }

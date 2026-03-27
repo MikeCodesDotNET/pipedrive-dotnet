@@ -56,7 +56,19 @@ namespace Pipedrive.Internal
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            throw new System.NotImplementedException();
+            var entity = (EntityUpdateFlow)value;
+            var jo = new JObject
+            {
+                ["object"] = entity.Object,
+                ["timestamp"] = JToken.FromObject(entity.Timestamp, serializer),
+            };
+
+            if (entity.Data != null)
+            {
+                jo["data"] = JToken.FromObject(entity.Data, serializer);
+            }
+
+            jo.WriteTo(writer);
         }
     }
 }

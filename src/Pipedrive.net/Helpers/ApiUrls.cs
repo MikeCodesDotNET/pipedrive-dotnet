@@ -53,6 +53,8 @@ namespace Pipedrive
 
         static readonly Uri _usersUrl = new Uri("users", UriKind.Relative);
 
+        static readonly Uri _mailboxUrl = new Uri("mailbox/mailMessages", UriKind.Relative);
+
         static readonly Uri _webhooksUrl = new Uri("webhooks", UriKind.Relative);
 
         /// <summary>
@@ -397,6 +399,11 @@ namespace Pipedrive
             return new Uri($"{_organizationsUrl}/{id}", UriKind.Relative);
         }
 
+        public static Uri OrganizationMerge(long id)
+        {
+            return new Uri($"{_organizationsUrl}/{id}/merge", UriKind.Relative);
+        }
+
         /// <summary>
         /// Returns the <see cref="Uri"/> for all the deals of the specified organization.
         /// </summary>
@@ -511,6 +518,11 @@ namespace Pipedrive
         public static Uri Person(long id)
         {
             return new Uri($"{_personsUrl}/{id}", UriKind.Relative);
+        }
+
+        public static Uri PersonMerge(long id)
+        {
+            return new Uri($"{_personsUrl}/{id}/merge", UriKind.Relative);
         }
 
         /// <summary>
@@ -862,6 +874,15 @@ namespace Pipedrive
         public static Uri User(long id)
         {
             return new Uri($"{_usersUrl}/{id}", UriKind.Relative);
+        }
+
+        /// <summary>
+        /// Returns the <see cref="Uri"/> for the specified mail message.
+        /// </summary>
+        /// <param name="id">The id of the mail message</param>
+        public static Uri MailboxMailMessage(long id)
+        {
+            return new Uri($"{_mailboxUrl}/{id}", UriKind.Relative);
         }
 
         /// <summary>
